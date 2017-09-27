@@ -1,4 +1,4 @@
-console.log('starting app.js');
+// console.log('starting app.js');
 
 const fs = require('fs');
 const os = require('os');
@@ -7,7 +7,7 @@ const yargs = require('yargs');
 const notes = require('./notes')
 
 const argv = yargs.argv;
-console.log(argv);
+// console.log(argv);
 var command = process.argv[2];
 
 if (command === 'add') {
@@ -21,7 +21,11 @@ if (command === 'add') {
     console.log(`Note could not be added: Note with title '${argv.title}' already exists!`);
   }
 } else if (command === 'list') {
-  notes.getAll();
+  var allNotes = notes.getAll();
+  console.log(`Printing ${allNotes.length} note(s).`);
+  allNotes.forEach((note) => {
+    notes.logNote(note)
+  })
   // console.log('listing all notes');
 } else if (command === 'read') {
   var note = notes.getNote(argv.title);
