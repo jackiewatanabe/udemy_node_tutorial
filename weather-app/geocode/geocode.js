@@ -11,7 +11,8 @@ var geocodeAddress = (address, callback) => {
       callback('Unable to connect to Google servers');
       // console.log();
     } else if (body.status === "ZERO_RESULTS") {
-      console.log('No results found');
+      callback('No results found')
+      // console.log('No results found');
     } else {
       callback(undefined, {
         address: body.results[0].formatted_address,
@@ -29,3 +30,5 @@ var geocodeAddress = (address, callback) => {
 module.exports = {
   geocodeAddress
 }
+
+// 30def0a49781bd8b32da881febb3c8ee
